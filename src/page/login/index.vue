@@ -51,17 +51,11 @@
     },
     methods: {
       login () {
-        this.axios.get('/user/userInfo')
-          .then((res) => {
-            if (res.status === 200) {
-              localStorage.setItem('userInfo', JSON.stringify(res.data))
-              this.$router.push({path: '/home'})
-            }
-          })
-          .catch((err) => {
-            console.log(err)
-          });
-
+        let res = this.$http.get('/user/userInfo')
+        if (res.status === 200) {
+          localStorage.setItem('userInfo', JSON.stringify(res.data))
+          this.$router.push({path: '/home'})
+        }
       }
     }
   }

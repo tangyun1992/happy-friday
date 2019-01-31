@@ -85,10 +85,9 @@
       },
       handleClose(key, keyPath) {
         console.log(key, keyPath);
-      }
+      },
     },
-    mounted () {
-    }
+    mounted () {}
   }
 </script>
 
