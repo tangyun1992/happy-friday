@@ -1,48 +1,65 @@
 <template>
   <div class="home">
-    <main-header></main-header>
-    <el-row class="menu" >
-      <el-col >
+    <el-row>
+      <main-header></main-header>
+    </el-row>
+    <el-row class="main">
+      <div class="menu">
         <el-menu
           background-color="rgb(101, 149, 188)"
           text-color="#fff"
-          default-active="2"
+          unique-opened="true"
           @open="handleOpen"
-          @close="handleClose">
-          <el-menu-item index="1">
+          @close="handleClose"
+        router>
+          <el-menu-item index="/custom">
             <template slot="title">
               <i class="el-icon-menu my-icon"></i>
               <span>主页</span>
             </template>
           </el-menu-item>
-          <el-submenu index="2">
-            <span slot="title">系统管理</span>
+          <el-submenu index="/system">
+            <template slot="title">系统管理</template>
+              <el-menu-item index="">选项1</el-menu-item>
+              <el-menu-item index="">选项2</el-menu-item>
           </el-submenu>
-          <el-submenu index="3">
-            <span slot="title">模板管理</span>
+          <el-submenu index="/template">
+            <template slot="title">模板管理</template>
+              <el-menu-item index="">选项1</el-menu-item>
+              <el-menu-item index="">选项2</el-menu-item>
           </el-submenu>
-          <el-submenu index="4">
-            <span slot="title">我的流程</span>
+          <el-submenu index="/process">
+            <template slot="title">我的流程</template>
+              <el-menu-item index="">选项1</el-menu-item>
+              <el-menu-item index="">选项2</el-menu-item>
           </el-submenu>
-          <el-submenu index="4">
-            <span slot="title">客户列表</span>
+          <el-submenu index="/custom">
+            <template slot="title">客户列表</template>
+              <el-menu-item index="">选项1</el-menu-item>
+              <el-menu-item index="">选项2</el-menu-item>
           </el-submenu>
-          <el-submenu index="4">
+          <el-submenu index="/table">
             <template slot="title">
             <i class="el-icon-setting my-icon"></i>
-            <span slot="title">统计报表</span>
+            <span>统计报表</span>
             </template>
+              <el-menu-item index="">选项1</el-menu-item>
+              <el-menu-item index="">选项2</el-menu-item>
           </el-submenu>
-          <el-submenu index="4">
+          <el-submenu index="/base">
             <template slot="title">
             <i class="el-icon-setting my-icon"></i>
-            <span slot="title">基础信息管理</span>
+            <span>基础信息管理</span>
             </template>
+              <el-menu-item index="">选项1</el-menu-item>
+              <el-menu-item index="">选项2</el-menu-item>
           </el-submenu>
         </el-menu>
-      </el-col>
+      </div>
+      <div class="content">
+        <router-view></router-view>
+      </div>
     </el-row>
-
   </div>
 </template>
 
@@ -70,22 +87,33 @@
 </script>
 
 <style scoped lang="less">
+  .main {
+    display: flex;
+    .menu {
+      width: 200px;
+      height: 800px;
+      background-color: rgb(101, 149, 188)
+    }
+    .content {
+      flex: 1;
+    }
+  }
   .my-icon {
     color: #fff;
-  }
-  .menu {
-    width: 200px;
   }
 
 </style>
 <style lang="less">
   .home {
-    .el-menu {
-      height: 800px;
-    }
     .el-menu-item [class^=el-icon-], .el-submenu [class^=el-icon-] {
       margin-right: 0;
       width: auto;
+    }
+    .el-menu-item.is-active{
+      color: #fff;
+    }
+    .el-submenu {
+
     }
   }
 </style>

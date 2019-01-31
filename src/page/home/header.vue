@@ -7,6 +7,7 @@
     </div>
     <div class="right">
       <span>{{name}} 欢迎您</span>
+      <span>修改密码</span>
       <el-button type="danger" @click="exit" class="exit">安全退出</el-button>
     </div>
   </div>
@@ -25,11 +26,11 @@
     watch: {},
     methods: {
       exit () {
-
+        this.$router.push({path: '/'})
       }
     },
     mounted () {
-      this.name = localStorage.getItem('userInfo').data.username
+      this.name =JSON.parse(localStorage.getItem('userInfo')).data.username
     }
   }
 </script>
