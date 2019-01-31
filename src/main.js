@@ -6,6 +6,15 @@ import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
+
+import axios from 'axios'
+import Qs from 'qs'
+//QS是axios库中带的，不需要我们再npm安装一个
+
+// 引入mockjs
+require('./mock/index')
+Vue.prototype.axios = axios;
+Vue.prototype.qs = Qs;
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 /* eslint-disable no-new */

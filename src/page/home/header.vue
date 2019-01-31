@@ -18,7 +18,7 @@
     components: {},
     data () {
       return {
-        name: 'admin'
+        name: ''
       }
     },
     props: {},
@@ -29,6 +29,7 @@
       }
     },
     mounted () {
+      this.name = localStorage.getItem('userInfo').data.username
     }
   }
 </script>
