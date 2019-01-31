@@ -1,8 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import login from '@/page/login/index'
-import home from '@/page/home/index'
-import custom from '@/page/custom-list/index'
 
 Vue.use(Router)
 
@@ -11,19 +8,23 @@ export default new Router({
     {
       path: '/',
       name: 'login',
-      component: login
+      component: resolve => require(['@/page/login/index'], resolve),
     },
     {
       path: '/home',
       name: 'home',
-      component: home,
+      component: resolve => require(['@/page/home/index'], resolve),
       children: [
         {
-          path: '/custom',
-          name: 'custom',
-          component: custom,
+          path: '/homePage',
+          name: 'homePage',
+          component: resolve => require(['@/page/home-page/index'], resolve),
         },
-
+        {
+          path: '/processList',
+          name: 'processList',
+          component: resolve => require(['@/page/custom-list/process-list/index'], resolve),
+        },
       ]
     },
   ]

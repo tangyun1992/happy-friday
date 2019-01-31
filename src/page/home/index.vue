@@ -12,7 +12,7 @@
           @open="handleOpen"
           @close="handleClose"
         router>
-          <el-menu-item index="/custom">
+          <el-menu-item index="/homePage">
             <template slot="title">
               <i class="el-icon-menu my-icon"></i>
               <span>主页</span>
@@ -35,8 +35,8 @@
           </el-submenu>
           <el-submenu index="/custom">
             <template slot="title">客户列表</template>
-              <el-menu-item index="">选项1</el-menu-item>
-              <el-menu-item index="">选项2</el-menu-item>
+              <el-menu-item index="/processList">流程列表</el-menu-item>
+              <el-menu-item index="">补充合同信息</el-menu-item>
           </el-submenu>
           <el-submenu index="/table">
             <template slot="title">
@@ -57,6 +57,12 @@
         </el-menu>
       </div>
       <div class="content">
+        <el-row>
+          <el-tabs v-model="activeName" @tab-click="handleClick">
+            <el-tab-pane label="欢迎使用" name="first">用户管理</el-tab-pane>
+            <el-tab-pane label="配置管理" name="second">配置管理</el-tab-pane>
+          </el-tabs>
+        </el-row>
         <router-view></router-view>
       </div>
     </el-row>

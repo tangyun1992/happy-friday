@@ -43,8 +43,12 @@
 <style scoped lang="less">
 .home-page {
   margin: 0 10px;
+  .content {
+
+  }
   .news, .quick-mark {
     border: 1px solid #ddd;
+    height:500px;
     header {
       color: #fff;
       height: 40px;
