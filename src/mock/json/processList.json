@@ -1,0 +1,36 @@
+
+{
+  "result": "success",
+  "data": [
+    {
+      "name": "Riclava",
+      "protocolNum": 7,
+      "initiator": "admin"
+    },
+    {
+      "name": "111111",
+      "protocolNum": 8,
+      "initiator": "admin"
+    },
+    {
+      "name": "测试点1",
+      "protocolNum": 5,
+      "initiator": "admin"
+    },
+    {
+      "name": "Riclava",
+      "protocolNum": 3,
+      "initiator": "admin"
+    },
+    {
+      "name": "Riclava",
+      "protocolNum": 12,
+      "initiator": "admin"
+    },{
+      "name": "Riclava",
+      "protocolNum": 7,
+      "initiator": "admin"
+    }
+  ],
+  "msg": ""
+}
