@@ -26,39 +26,39 @@
 </template>
 
 <script>
-  export default {
-    name: 'index',
-    components: {},
-    data() {
-      let validatePass = (rule, value, callback) => {
-        if (value === '') {
-          callback(new Error('请输入密码'))
-        } else {
-          if (this.form.password !== '') {
-            this.$refs.form.validateField('password')
-          }
-          callback();
+export default {
+  name: 'index',
+  components: {},
+  data () {
+    let validatePass = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请输入密码'))
+      } else {
+        if (this.form.password !== '') {
+          this.$refs.form.validateField('password')
         }
+        callback()
       }
-      return {
-        form: {
-          name: '',
-          password: [
-            { validator: validatePass, trigger: 'blur' }
-          ],
-        }
+    }
+    return {
+      form: {
+        name: '',
+        password: [
+          { validator: validatePass, trigger: 'blur' }
+        ]
       }
-    },
-    methods: {
-      async login () {
-        let res = await this.$http.get('/user/userInfo')
-        if (res.status === 200) {
-          localStorage.setItem('userInfo', JSON.stringify(res.data))
-          this.$router.push({path: '/home'})
-        }
+    }
+  },
+  methods: {
+    async login () {
+      let res = await this.$http.get('/user/userInfo')
+      if (res.status === 200) {
+        localStorage.setItem('userInfo', JSON.stringify(res.data))
+        this.$router.push({path: '/home'})
       }
     }
   }
+}
 </script>
 
 <style scoped>
