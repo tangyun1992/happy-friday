@@ -50,8 +50,8 @@
       }
     },
     methods: {
-      login () {
-        let res = this.$http.get('/user/userInfo')
+      async login () {
+        let res = await this.$http.get('/user/userInfo')
         if (res.status === 200) {
           localStorage.setItem('userInfo', JSON.stringify(res.data))
           this.$router.push({path: '/home'})
