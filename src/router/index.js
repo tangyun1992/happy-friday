@@ -18,12 +18,17 @@ export default new Router({
         {
           path: '/homePage',
           name: 'homePage',
-          component: resolve => require(['@/page/home-page/index'], resolve),
+          component: resolve => require(['@/page/home/home-page/index'], resolve),
         },
         {
           path: '/processList',
           name: 'processList',
           component: resolve => require(['@/page/custom-list/process-list/index'], resolve),
+        },
+        {
+          path: '/myprocessList',
+          name: 'myprocessList',
+          component: resolve => require(['@/page/my-custom-list/index'], resolve),
         },
       ]
     },
