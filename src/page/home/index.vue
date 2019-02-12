@@ -8,7 +8,7 @@
         <el-menu
           background-color="rgb(101, 149, 188)"
           text-color="#fff"
-          unique-opened="true"
+          unique-opened
           @open="handleOpen"
           @close="handleClose"
         router>
@@ -70,25 +70,28 @@
 </template>
 
 <script>
-  import mainHeader from './header'
-  export default {
-    name: 'index',
-    components: {mainHeader},
-    data () {
-      return {}
+import mainHeader from './header'
+export default {
+  name: 'index',
+  components: {mainHeader},
+  data () {
+    return {
+      activeName: ''
+    }
+  },
+  props: {},
+  watch: {},
+  methods: {
+    handleOpen (key, keyPath) {
+      console.log(key, keyPath)
     },
-    props: {},
-    watch: {},
-    methods: {
-      handleOpen(key, keyPath) {
-        console.log(key, keyPath);
-      },
-      handleClose(key, keyPath) {
-        console.log(key, keyPath);
-      },
+    handleClose (key, keyPath) {
+      console.log(key, keyPath)
     },
-    mounted () {}
-  }
+    handleClick () {}
+  },
+  mounted () {}
+}
 </script>
 
 <style scoped lang="less">

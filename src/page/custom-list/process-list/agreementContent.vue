@@ -27,6 +27,14 @@
       <el-table-column prop="startDate" label="发起时间" show-overflow-tooltip=true></el-table-column>
       <el-table-column prop="ifUpload" label="是否上传合同"></el-table-column>
     </el-table>
+    <el-pagination
+      @current-change="handleCurrentChange"
+      :current-page="currentPage"
+      :page-size="10"
+      :page-sizes="[10, 20, 30, 40]"
+      layout="total, sizes, prev, pager, next, jumper"
+      :total="40">
+    </el-pagination>
   </div>
 </template>
 
@@ -61,6 +69,9 @@ export default {
       if (res.data.result === 'success') {
         this.tableData = res.data.data
       }
+    },
+    handleCurrentChange (page) {
+      this.currentPage = page
     }
   },
   mounted () {

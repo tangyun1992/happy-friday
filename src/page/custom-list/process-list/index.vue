@@ -6,10 +6,10 @@
         <el-input></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button @click=""><i class="el-icon-search my-icon"></i>查询</el-button>
+        <el-button @click="getData"><i class="el-icon-search my-icon"></i>查询</el-button>
       </el-form-item>
       <el-form-item>
-        <el-button @click=""><i class="el-icon-minus my-icon reset"></i>重置</el-button>
+        <el-button @click="reset"><i class="el-icon-minus my-icon reset"></i>重置</el-button>
       </el-form-item>
     </el-form>
     <el-table
@@ -17,7 +17,6 @@
       ref="singleTable"
       :data="tableData"
       highlight-current-row
-      @current-change=""
       style="width: 100%">
       <el-table-column label="新增客户" :render-header="renderHeader" @click="add">
         <el-table-column
@@ -42,15 +41,14 @@
         </el-table-column>
         <el-table-column label="操作">
           <template slot-scope="scope">
-            <span @click=""><i class="el-icon-circle-plus-outline my-icon reset"></i>新增协议</span>
+            <span @click="addAgreement"><i class="el-icon-circle-plus-outline my-icon reset"></i>新增协议</span>
           </template>
         </el-table-column>
       </el-table-column>
     </el-table>
     <el-pagination
-      @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
-      :current-page="currentPage4"
+      :current-page="params.currentPage"
       :page-sizes="[100, 200, 300, 400]"
       :page-size="100"
       layout="total, sizes, prev, pager, next, jumper"
@@ -66,18 +64,27 @@ export default {
   components: { agreementContent },
   data () {
     return {
-      tableData: []
+      tableData: [],
+      params: {
+        currentPage: 1,
+        custom: ''
+      }
     }
   },
   props: {},
   watch: {},
   methods: {
     async getData () {
-      let res = await this.$http.post('/getProcessList', {})
+      let res = await this.$http.post('/getProcessList', this.params)
       this.tableData = res.data.data
       console.log(this.$refs.singleTable)
     },
     add () {},
+    addAgreement () {},
+    handleCurrentChange (page) {
+
+    },
+    reset () {},
     // render 事件
     renderHeader (h, {column}) { // h即为cerateElement的简写，具体可看vue官方文档
       return h(
