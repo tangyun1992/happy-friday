@@ -23,6 +23,11 @@
         <el-table-column
           type="index">
         </el-table-column>
+        <el-table-column type="expand">
+          <template slot-scope="props">
+            <agreement-content :custom-id="props.row.name"></agreement-content>
+          </template>
+        </el-table-column>
         <el-table-column
           property="name"
           label="姓名">
@@ -55,28 +60,13 @@
 </template>
 
 <script>
+import agreementContent from './agreementContent'
 export default {
   name: 'index',
-  components: {},
+  components: { agreementContent },
   data () {
     return {
-      tableData: [{
-        date: '2016-05-02',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }, {
-        date: '2016-05-04',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1517 弄'
-      }, {
-        date: '2016-05-01',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1519 弄'
-      }, {
-        date: '2016-05-03',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1516 弄'
-      }]
+      tableData: []
     }
   },
   props: {},
@@ -85,7 +75,6 @@ export default {
     async getData () {
       let res = await this.$http.post('/getProcessList', {})
       this.tableData = res.data.data
-      debugger
       console.log(this.$refs.singleTable)
     },
     add () {},
