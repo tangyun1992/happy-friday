@@ -8,7 +8,7 @@
         <el-menu
           background-color="rgb(101, 149, 188)"
           text-color="#fff"
-          unique-opened="true"
+          unique-opened
           @open="handleOpen"
           @close="handleClose"
         router>
@@ -75,7 +75,9 @@ export default {
   name: 'index',
   components: {mainHeader},
   data () {
-    return {}
+    return {
+      activeName: ''
+    }
   },
   props: {},
   watch: {},
@@ -85,7 +87,8 @@ export default {
     },
     handleClose (key, keyPath) {
       console.log(key, keyPath)
-    }
+    },
+    handleClick () {}
   },
   mounted () {}
 }

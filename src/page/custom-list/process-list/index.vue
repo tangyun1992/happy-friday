@@ -6,10 +6,10 @@
         <el-input></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button @click=""><i class="el-icon-search my-icon"></i>查询</el-button>
+        <el-button @click="getData"><i class="el-icon-search my-icon"></i>查询</el-button>
       </el-form-item>
       <el-form-item>
-        <el-button @click=""><i class="el-icon-minus my-icon reset"></i>重置</el-button>
+        <el-button @click="reset"><i class="el-icon-minus my-icon reset"></i>重置</el-button>
       </el-form-item>
     </el-form>
     <el-table
@@ -17,11 +17,15 @@
       ref="singleTable"
       :data="tableData"
       highlight-current-row
-      @current-change=""
       style="width: 100%">
       <el-table-column label="新增客户" :render-header="renderHeader" @click="add">
         <el-table-column
           type="index">
+        </el-table-column>
+        <el-table-column type="expand">
+          <template slot-scope="props">
+            <agreement-content :custom-id="props.row.name"></agreement-content>
+          </template>
         </el-table-column>
         <el-table-column
           property="name"
@@ -37,58 +41,63 @@
         </el-table-column>
         <el-table-column label="操作">
           <template slot-scope="scope">
-            <span @click=""><i class="el-icon-circle-plus-outline my-icon reset"></i>新增协议</span>
+            <span @click="addAgreement"><i class="el-icon-circle-plus-outline my-icon reset"></i>新增协议</span>
           </template>
         </el-table-column>
       </el-table-column>
     </el-table>
     <el-pagination
-      @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
-      :current-page="currentPage4"
+      :current-page="params.currentPage"
       :page-sizes="[100, 200, 300, 400]"
       :page-size="100"
       layout="total, sizes, prev, pager, next, jumper"
       :total="400">
     </el-pagination>
+    <!--新增协议-->
+    <el-dialog :visible.sync="showAgreementDialog" title="新增协议"  width="70%">
+      <agreement-detail></agreement-detail>
+    </el-dialog>
   </div>
 </template>
 
 <script>
+import agreementContent from './agreementContent'
+import agreementDetail from './agreementDetail'
 export default {
   name: 'index',
-  components: {},
+  components: { agreementContent, agreementDetail },
   data () {
     return {
-      tableData: [{
-        date: '2016-05-02',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }, {
-        date: '2016-05-04',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1517 弄'
-      }, {
-        date: '2016-05-01',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1519 弄'
-      }, {
-        date: '2016-05-03',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1516 弄'
-      }]
+      tableData: [],
+      params: {
+        currentPage: 1,
+        custom: ''
+      },
+      showAgreementDialog: false
     }
   },
   props: {},
   watch: {},
   methods: {
     async getData () {
-      let res = await this.$http.post('/getProcessList', {})
+      let res = await this.$http.post('/getProcessList', this.params)
       this.tableData = res.data.data
-      debugger
       console.log(this.$refs.singleTable)
     },
+    // 新增客户
     add () {},
+    // 新增协议
+    addAgreement () {
+      this.showAgreementDialog = true
+    },
+    handleCurrentChange (page) {
+      this.params.currentPage = page
+    },
+    // 重置
+    reset () {
+      this.params.custom = ''
+    },
     // render 事件
     renderHeader (h, {column}) { // h即为cerateElement的简写，具体可看vue官方文档
       return h(
