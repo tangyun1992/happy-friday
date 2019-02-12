@@ -1,9 +1,7 @@
 <template>
   <div class="home-page">
     <el-row>
-      <el-col v-for="index in 4" :span="6">
         <card></card>
-      </el-col>
     </el-row>
     <el-row class="content">
       <el-col :span="16" class="news">
@@ -18,6 +16,7 @@
         <header>扫码登录</header>
         <div>
           <span>扫描二维码登录手机端系统</span>
+          <i class="el-icon-menu"></i>
         </div>
       </el-col>
     </el-row>
@@ -25,19 +24,19 @@
 </template>
 
 <script>
-  import card from './card'
-  export default {
-    name: 'index',
-    components: { card },
-    data () {
-      return {}
-    },
-    props: {},
-    watch: {},
-    methods: {},
-    mounted () {
-    }
+import card from './card'
+export default {
+  name: 'index',
+  components: { card },
+  data () {
+    return {}
+  },
+  props: {},
+  watch: {},
+  methods: {},
+  mounted () {
   }
+}
 </script>
 
 <style scoped lang="less">
@@ -60,6 +59,13 @@
   .quick-mark {
     header {
       background-color: rgb(69, 103, 130);
+    }
+    div {
+      margin: 10px;
+      text-align: center;
+      i {
+        font-size: 250px;
+      }
     }
   }
 }

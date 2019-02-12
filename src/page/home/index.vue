@@ -36,7 +36,7 @@
           <el-submenu index="/custom">
             <template slot="title">客户列表</template>
               <el-menu-item index="/processList">流程列表</el-menu-item>
-              <el-menu-item index="">补充合同信息</el-menu-item>
+              <el-menu-item index="/myprocessList">补充合同信息</el-menu-item>
           </el-submenu>
           <el-submenu index="/table">
             <template slot="title">
