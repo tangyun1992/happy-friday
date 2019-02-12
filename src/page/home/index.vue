@@ -70,25 +70,25 @@
 </template>
 
 <script>
-  import mainHeader from './header'
-  export default {
-    name: 'index',
-    components: {mainHeader},
-    data () {
-      return {}
+import mainHeader from './header'
+export default {
+  name: 'index',
+  components: {mainHeader},
+  data () {
+    return {}
+  },
+  props: {},
+  watch: {},
+  methods: {
+    handleOpen (key, keyPath) {
+      console.log(key, keyPath)
     },
-    props: {},
-    watch: {},
-    methods: {
-      handleOpen(key, keyPath) {
-        console.log(key, keyPath);
-      },
-      handleClose(key, keyPath) {
-        console.log(key, keyPath);
-      },
-    },
-    mounted () {}
-  }
+    handleClose (key, keyPath) {
+      console.log(key, keyPath)
+    }
+  },
+  mounted () {}
+}
 </script>
 
 <style scoped lang="less">

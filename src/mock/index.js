@@ -9,7 +9,9 @@ Mock.mock('/user/userInfo', 'get', require('./json/userInfo'))
 Mock.mock('/getProcessList', 'post', () => {
   return require('./json/processList')
 })
-
+Mock.mock('/getAgreementList', 'post', () => {
+  return require('./json/processList')
+})
 Mock.mock('/getNum', 'get', () => {
   return {
     'all': 1

@@ -19,37 +19,8 @@
     </el-form>
     <el-table :data="tableData" border stripe width="100%">
       <el-table-column type="index" width="50" label="序号"></el-table-column>
-      <el-table-column width="40">
-        <template slot-scope="scope">
-          <i class="el-icon-plus"></i>
-        </template>
-      </el-table-column>
       <el-table-column type="expand">
-        <template slot-scope="props">
-          <el-form label-position="left" inline class="demo-table-expand">
-            <el-form-item label="商品名称">
-              <span>{{ props.row.name }}</span>
-            </el-form-item>
-            <el-form-item label="所属店铺">
-              <span>{{ props.row.shop }}</span>
-            </el-form-item>
-            <el-form-item label="商品 ID">
-              <span>{{ props.row.id }}</span>
-            </el-form-item>
-            <el-form-item label="店铺 ID">
-              <span>{{ props.row.shopId }}</span>
-            </el-form-item>
-            <el-form-item label="商品分类">
-              <span>{{ props.row.category }}</span>
-            </el-form-item>
-            <el-form-item label="店铺地址">
-              <span>{{ props.row.address }}</span>
-            </el-form-item>
-            <el-form-item label="商品描述">
-              <span>{{ props.row.desc }}</span>
-            </el-form-item>
-          </el-form>
-        </template>
+        <con></con>
       </el-table-column>
       <el-table-column label="客户名称" prop="name"></el-table-column>
       <el-table-column label="协议数量" prop="protocolNum"></el-table-column>
@@ -70,9 +41,10 @@
 </template>
 
 <script>
+import con from './content'
 export default {
   name: 'index',
-  components: {},
+  components: {con},
   data () {
     return {
       tableData: [],
