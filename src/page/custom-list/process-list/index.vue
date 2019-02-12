@@ -54,21 +54,27 @@
       layout="total, sizes, prev, pager, next, jumper"
       :total="400">
     </el-pagination>
+    <!--新增协议-->
+    <el-dialog :visible.sync="showAgreementDialog" title="新增协议"  width="70%">
+      <agreement-detail></agreement-detail>
+    </el-dialog>
   </div>
 </template>
 
 <script>
 import agreementContent from './agreementContent'
+import agreementDetail from './agreementDetail'
 export default {
   name: 'index',
-  components: { agreementContent },
+  components: { agreementContent, agreementDetail },
   data () {
     return {
       tableData: [],
       params: {
         currentPage: 1,
         custom: ''
-      }
+      },
+      showAgreementDialog: false
     }
   },
   props: {},
@@ -79,12 +85,19 @@ export default {
       this.tableData = res.data.data
       console.log(this.$refs.singleTable)
     },
+    // 新增客户
     add () {},
-    addAgreement () {},
-    handleCurrentChange (page) {
-
+    // 新增协议
+    addAgreement () {
+      this.showAgreementDialog = true
     },
-    reset () {},
+    handleCurrentChange (page) {
+      this.params.currentPage = page
+    },
+    // 重置
+    reset () {
+      this.params.custom = ''
+    },
     // render 事件
     renderHeader (h, {column}) { // h即为cerateElement的简写，具体可看vue官方文档
       return h(
