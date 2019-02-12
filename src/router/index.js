@@ -15,11 +15,11 @@ export default new Router({
       name: 'home',
       component: resolve => require(['@/page/home/index'], resolve),
       children: [
-        {
-          path: '/homePage',
-          name: 'homePage',
-          component: resolve => require(['@/page/home-page/index'], resolve),
-        },
+        // {
+        //   path: '/homePage',
+        //   name: 'homePage',
+        //   component: resolve => require(['@/page/home-page/index'], resolve),
+        // },
         {
           path: '/processList',
           name: 'processList',
