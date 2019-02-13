@@ -102,13 +102,15 @@
         </el-form-item>
       </el-row>
     </el-form>
+    <business-describe></business-describe>
   </div>
 </template>
 
 <script>
+import businessDescribe from './businessDescribe'
 export default {
   name: 'agreementDetail',
-  components: {},
+  components: { businessDescribe },
   data () {
     return {
       detail: {
@@ -140,7 +142,6 @@ export default {
     font-size: 16px;
   }
   .agreementDetail {
-    height: 400px;
     .title {
       margin: 10px;
       font-weight: bold;
