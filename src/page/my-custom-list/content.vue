@@ -18,7 +18,7 @@
      <el-table-column label="协议名称"></el-table-column>
      <el-table-column label="协议生效日期"></el-table-column>
    </el-table>
-    <el-dialog title="新增协议" :visible.sync="dialogFormVisible">
+    <el-dialog title="补充协议" :visible.sync="dialogFormVisible" width="60%">
       <dialog-content :detail="detail"></dialog-content>
     </el-dialog>
   </div>
@@ -32,14 +32,12 @@ export default {
   data () {
     return {
       contentData: [],
-      dialogFormVisible: false,
-      detail: {
-        name: 'ty',
-        type: 1
-      }
+      dialogFormVisible: false
     }
   },
-  props: {},
+  props: {
+    detail: Object
+  },
   watch: {},
   methods: {
     addContent () {
